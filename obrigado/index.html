@@ -415,6 +415,41 @@ p:last-child { margin-bottom: 0; }
 }
 .hero-info svg { color: #ffd7ff; }
 
+/* Método PCE — badge integrado ao hero */
+.hero-method {
+  display: inline-block;
+  margin: 0;
+  padding: .55rem 1rem;
+  background: rgba(255, 0, 0, .16);
+  border: 1px solid rgba(255, 0, 0, .40);
+  border-radius: var(--radius-pill);
+  color: #ffdada;
+  font-size: .95rem;
+  font-weight: 500;
+}
+.hero-method strong { color: #fff; font-weight: 800; }
+
+/* Horários por país no hero */
+.hero-schedule {
+  display: inline-flex !important;
+  align-items: center;
+  gap: var(--sp-3) !important;
+  padding: .55rem 1rem !important;
+}
+.hero-schedule-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  padding: 2px 8px;
+  background: rgba(255, 0, 0, .18);
+  border-radius: var(--radius-pill);
+}
+.hero-schedule-value { color: #fff; font-weight: 500; }
+.hero-schedule-value strong { color: #fff; font-weight: 800; }
+.hero-schedule-sep { color: rgba(255,255,255,.5); margin: 0 4px; }
+
 /* Formulário do hero */
 .hero-form-wrap { position: relative; }
 .signup-form {
@@ -913,10 +948,58 @@ p:last-child { margin-bottom: 0; }
 }
 .thanks-h1 .name-highlight { color: #ffd7ff; }
 .thanks-sub {
-  color: rgba(255,255,255,.85);
+  color: rgba(255,255,255,.93);
   max-width: 60ch;
   margin: 0 auto;
 }
+
+/* Menção ao Método PCE — abaixo do subtítulo, sem competir com os cards */
+.thanks-method {
+  max-width: 60ch;
+  margin: 1.25rem auto 0;
+  padding: .6rem 1.1rem;
+  background: rgba(255, 0, 0, .18);
+  border: 1px solid rgba(255, 0, 0, .38);
+  border-radius: var(--radius-pill);
+  color: #ffdada;
+  font-size: .95rem;
+  text-align: center;
+}
+.thanks-method strong { color: #fff; font-weight: 800; }
+
+/* Horários por país na página de obrigado */
+.thanks-schedule {
+  list-style: none;
+  padding: 0;
+  margin: 1rem auto 0;
+  max-width: 60ch;
+  display: flex;
+  flex-wrap: wrap;                /* 1 linha desktop, 2 linhas mobile */
+  justify-content: center;
+  gap: var(--sp-3);
+}
+.thanks-schedule li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: .5rem .95rem;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: var(--radius-pill);
+  color: #fff;
+  font-size: .92rem;
+}
+.thanks-schedule-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  padding: 2px 8px;
+  background: rgba(255, 0, 0, .22);
+  border-radius: var(--radius-pill);
+}
+.thanks-schedule-value { font-weight: 500; }
 
 .step {
   background: #17172e;                              /* sólido para cobrir a foto atrás */
@@ -1197,36 +1280,30 @@ p:last-child { margin-bottom: 0; }
 
 <a class="skip-link" href="#step-1">Ir para os próximos passos</a>
 
-<!-- Faixa fixa topo — ticker contínuo (marquee) com data/horário do evento -->
+<!-- Faixa fixa topo — ticker contínuo (marquee) com data/horário oficial -->
 <div class="event-bar event-bar-marquee" role="region" aria-label="Informações do evento ao vivo">
-  <!-- 1 versão acessível única para leitores de tela -->
   <span class="sr-only">
-    Aula ao vivo,
-    <span data-cfg="weekday">DIA A CONFIRMAR</span>,
-    <span data-cfg="date">DATA A CONFIRMAR</span>,
-    às <span data-cfg="time">HORÁRIO A CONFIRMAR</span>.
+    Aula ao vivo e gratuita. Brasil,
+    <span data-cfg="br-date">29/09</span> às <span data-cfg="br-time">20h30</span>.
+    Austrália,
+    <span data-cfg="au-date">30/09</span> às <span data-cfg="au-time">9h30</span>.
   </span>
-  <!-- Trilho visual com 2 cópias idênticas para loop perfeito -->
   <div class="event-bar-track" aria-hidden="true">
     <span class="event-bar-item">
       <span class="event-bar-dot"></span>
-      <span class="event-bar-cell" data-cfg="weekday">DIA A CONFIRMAR</span>
+      <span class="event-bar-cell">Brasil: <span data-cfg="br-date">29/09</span> às <span data-cfg="br-time">20h30</span></span>
       <span class="event-bar-dot"></span>
-      <span class="event-bar-cell" data-cfg="date">DATA A CONFIRMAR</span>
+      <span class="event-bar-cell">Austrália: <span data-cfg="au-date">30/09</span> às <span data-cfg="au-time">9h30</span></span>
       <span class="event-bar-dot"></span>
-      <span class="event-bar-cell" data-cfg="time">HORÁRIO A CONFIRMAR</span>
-      <span class="event-bar-dot"></span>
-      <span class="event-bar-live"><span class="live-pulse"></span>Ao vivo</span>
+      <span class="event-bar-live"><span class="live-pulse"></span>Aula ao vivo e gratuita</span>
     </span>
     <span class="event-bar-item">
       <span class="event-bar-dot"></span>
-      <span class="event-bar-cell" data-cfg="weekday">DIA A CONFIRMAR</span>
+      <span class="event-bar-cell">Brasil: <span data-cfg="br-date">29/09</span> às <span data-cfg="br-time">20h30</span></span>
       <span class="event-bar-dot"></span>
-      <span class="event-bar-cell" data-cfg="date">DATA A CONFIRMAR</span>
+      <span class="event-bar-cell">Austrália: <span data-cfg="au-date">30/09</span> às <span data-cfg="au-time">9h30</span></span>
       <span class="event-bar-dot"></span>
-      <span class="event-bar-cell" data-cfg="time">HORÁRIO A CONFIRMAR</span>
-      <span class="event-bar-dot"></span>
-      <span class="event-bar-live"><span class="live-pulse"></span>Ao vivo</span>
+      <span class="event-bar-live"><span class="live-pulse"></span>Aula ao vivo e gratuita</span>
     </span>
   </div>
 </div>
@@ -1262,6 +1339,21 @@ p:last-child { margin-bottom: 0; }
     <p class="thanks-sub">
       Sua vaga já está reservada. Conclua abaixo para garantir seu acesso.
     </p>
+
+    <p class="thanks-method">
+      Na aula, você vai conhecer o <strong>Método PCE:</strong> Perfil, Coerência e Evidência.
+    </p>
+
+    <ul class="thanks-schedule" role="list">
+      <li>
+        <span class="thanks-schedule-label">Brasil</span>
+        <span class="thanks-schedule-value"><span data-cfg="br-date">29/09</span> às <span data-cfg="br-time">20h30</span></span>
+      </li>
+      <li>
+        <span class="thanks-schedule-label">Austrália</span>
+        <span class="thanks-schedule-value"><span data-cfg="au-date">30/09</span> às <span data-cfg="au-time">9h30</span></span>
+      </li>
+    </ul>
   </section>
 
   <div class="steps">
@@ -1310,8 +1402,8 @@ p:last-child { margin-bottom: 0; }
           <label for="q-prazo">Quando pretende embarcar para a Austrália?</label>
           <select id="q-prazo" name="prazo" required>
             <option value="" disabled selected>Selecione uma opção</option>
-            <option>Em até 6 meses</option>
             <option>Em 2026</option>
+            <option>Em até 6 meses</option>
             <option>Em 2027</option>
             <option>Ainda não sei</option>
           </select>
@@ -1414,9 +1506,14 @@ p:last-child { margin-bottom: 0; }
    CONFIGURAÇÃO — mesma da LP de inscrição. Trocar aqui na integração final.
    ------------------------------------------------------------------------- */
 const EVENT_CONFIG = {
-  weekday: 'DIA A CONFIRMAR',
-  date: 'DATA A CONFIRMAR',
-  time: 'HORÁRIO A CONFIRMAR',
+  /* Datas oficiais do evento (Método PCE) */
+  'br-date': '29/09',
+  'br-time': '20h30',
+  'au-date': '30/09',
+  'au-time': '9h30',
+  method: 'PCE',
+  methodExpanded: 'Perfil, Coerência e Evidência',
+
   instagramUrl: '',
   whatsappGroupUrl: 'https://chat.whatsapp.com/Lj1KepxzSYF1OB4A83P6rH',
   surveyEndpoint: '',            // POST das respostas quando demoMode = false
