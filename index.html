@@ -424,6 +424,41 @@ p:last-child { margin-bottom: 0; }
 }
 .hero-info svg { color: #ffd7ff; }
 
+/* Método PCE — badge integrado ao hero */
+.hero-method {
+  display: inline-block;
+  margin: 0;
+  padding: .55rem 1rem;
+  background: rgba(255, 0, 0, .16);
+  border: 1px solid rgba(255, 0, 0, .40);
+  border-radius: var(--radius-pill);
+  color: #ffdada;
+  font-size: .95rem;
+  font-weight: 500;
+}
+.hero-method strong { color: #fff; font-weight: 800; }
+
+/* Horários por país no hero */
+.hero-schedule {
+  display: inline-flex !important;
+  align-items: center;
+  gap: var(--sp-3) !important;
+  padding: .55rem 1rem !important;
+}
+.hero-schedule-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  padding: 2px 8px;
+  background: rgba(255, 0, 0, .18);
+  border-radius: var(--radius-pill);
+}
+.hero-schedule-value { color: #fff; font-weight: 500; }
+.hero-schedule-value strong { color: #fff; font-weight: 800; }
+.hero-schedule-sep { color: rgba(255,255,255,.5); margin: 0 4px; }
+
 /* Formulário do hero */
 .hero-form-wrap { position: relative; }
 .signup-form {
@@ -816,23 +851,23 @@ p:last-child { margin-bottom: 0; }
   min-height: calc(100vh - 42px);
 }
 
-/* Hero band da obrigado — foto de Sydney com overlay quente estilo pôr do sol */
+/* Hero band da obrigado — foto de Sydney com overlay reforçado (contraste do título) */
 .thanks-hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding: clamp(2.5rem, 5vw, 4rem) var(--sp-5) clamp(5rem, 10vw, 8rem);
   text-align: center;
-  min-height: 280px;
+  min-height: 320px;
   background-color: #1a0a1a;
   background-image:
-    /* overlay estilo pôr do sol: vermelho da marca no topo, roxo profundo em baixo,
-       transição suave para o preto onde a página continua */
+    /* Camada escura reforçada (~65–72%) com toque vinho/roxo, sem apagar a foto.
+       Preserva Opera House e Harbour Bridge reconhecíveis. */
     linear-gradient(180deg,
-      rgba(255, 0, 0, 0.28)   0%,
-      rgba(118, 0, 135, 0.55) 45%,
-      rgba(29, 10, 60, 0.85)  80%,
-      rgba(18, 18, 42, 1)    100%
+      rgba(20,   4, 30, 0.66)  0%,
+      rgba(46,   6, 55, 0.72) 40%,
+      rgba(29,  10, 60, 0.88) 78%,
+      rgba(18,  18, 42, 1.00) 100%
     ),
     var(--sydney-band-bg);
   background-size: cover;
@@ -843,12 +878,12 @@ p:last-child { margin-bottom: 0; }
   .thanks-hero {
     padding-block: clamp(2rem, 4vw, 3rem) clamp(4rem, 8vw, 6rem);
     background-position: 32% center;
-    min-height: 260px;
+    min-height: 300px;
     background-image:
       linear-gradient(180deg,
-        rgba(255, 0, 0, 0.24)   0%,
-        rgba(118, 0, 135, 0.62) 45%,
-        rgba(18, 18, 42, 0.98) 100%
+        rgba(20,  4, 30, 0.70)  0%,
+        rgba(46,  6, 55, 0.78) 40%,
+        rgba(18, 18, 42, 0.99) 100%
       ),
       var(--sydney-band-bg);
   }
@@ -922,10 +957,58 @@ p:last-child { margin-bottom: 0; }
 }
 .thanks-h1 .name-highlight { color: #ffd7ff; }
 .thanks-sub {
-  color: rgba(255,255,255,.85);
+  color: rgba(255,255,255,.93);
   max-width: 60ch;
   margin: 0 auto;
 }
+
+/* Menção ao Método PCE — abaixo do subtítulo, sem competir com os cards */
+.thanks-method {
+  max-width: 60ch;
+  margin: 1.25rem auto 0;
+  padding: .6rem 1.1rem;
+  background: rgba(255, 0, 0, .18);
+  border: 1px solid rgba(255, 0, 0, .38);
+  border-radius: var(--radius-pill);
+  color: #ffdada;
+  font-size: .95rem;
+  text-align: center;
+}
+.thanks-method strong { color: #fff; font-weight: 800; }
+
+/* Horários por país na página de obrigado */
+.thanks-schedule {
+  list-style: none;
+  padding: 0;
+  margin: 1rem auto 0;
+  max-width: 60ch;
+  display: flex;
+  flex-wrap: wrap;                /* 1 linha desktop, 2 linhas mobile */
+  justify-content: center;
+  gap: var(--sp-3);
+}
+.thanks-schedule li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: .5rem .95rem;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: var(--radius-pill);
+  color: #fff;
+  font-size: .92rem;
+}
+.thanks-schedule-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  padding: 2px 8px;
+  background: rgba(255, 0, 0, .22);
+  border-radius: var(--radius-pill);
+}
+.thanks-schedule-value { font-weight: 500; }
 
 .step {
   background: #17172e;                              /* sólido para cobrir a foto atrás */
@@ -1063,7 +1146,120 @@ p:last-child { margin-bottom: 0; }
 }
 .whatsapp-warn svg { color: #ffd7ff; flex-shrink: 0; margin-top: 2px; }
 
-/* ---------- 17. Preferências do usuário ---------- */
+/* ---------- 17. Barra de progresso (obrigado) ---------- */
+.progress-block {
+  max-width: 620px;
+  margin: clamp(1rem, 2vw, 1.5rem) auto clamp(1rem, 2vw, 1.5rem);
+  padding: 0 var(--sp-4);
+  color: #fff;
+  text-align: left;
+}
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: rgba(255, 255, 255, .88);
+  margin-bottom: .5rem;
+}
+.progress-label-right {
+  color: var(--brand-red);
+  font-weight: 700;
+}
+.progress-bar {
+  position: relative;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .16);
+  border: 1px solid rgba(255, 255, 255, .18);
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .35);
+}
+.progress-fill {
+  display: block;
+  height: 100%;
+  width: 90%;               /* estado final */
+  border-radius: inherit;
+  background: linear-gradient(90deg,
+    var(--brand-red-90) 0%,
+    var(--brand-red) 55%,
+    var(--c-lilac) 100%);
+  box-shadow: 0 0 12px rgba(255, 0, 0, .55);
+  transform-origin: left center;
+  animation: progressGrow 1.2s cubic-bezier(.35, 0, .2, 1) both;
+}
+@keyframes progressGrow {
+  from { width: 0%; opacity: .7; }
+  to   { width: 90%; opacity: 1; }
+}
+
+/* ---------- 18. Faixa animada (marquee) da obrigado ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+.event-bar-marquee {
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(90deg, #12061a 0%, #1a0620 50%, #12061a 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+.event-bar-marquee .event-bar-track {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  will-change: transform;
+  animation: marqueeScroll 30s linear infinite;
+  animation-play-state: running;
+}
+.event-bar-marquee .event-bar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: .7rem 2.5rem .7rem 0;
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.event-bar-marquee .event-bar-item:first-child { padding-left: 2.5rem; }
+.event-bar-marquee .event-bar-cell {
+  white-space: nowrap;
+}
+.event-bar-marquee .event-bar-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--brand-red);
+  box-shadow: 0 0 8px rgba(255, 0, 0, .8);
+  flex-shrink: 0;
+}
+.event-bar-marquee .event-bar-live {
+  border-color: rgba(255, 0, 0, .55);
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (max-width: 767px) {
+  .event-bar-marquee .event-bar-track { animation-duration: 26s; }
+  .event-bar-marquee .event-bar-item {
+    gap: var(--sp-3);
+    padding-right: 1.75rem;
+    font-size: .76rem;
+    letter-spacing: .1em;
+  }
+  .event-bar-marquee .event-bar-item:first-child { padding-left: 1.75rem; }
+}
+
+/* ---------- 19. Preferências do usuário ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * {
@@ -1072,7 +1268,19 @@ p:last-child { margin-bottom: 0; }
     transition-duration: .01ms !important;
   }
   .btn:hover, .learn-card:hover, .whatsapp-cta:hover { transform: none; }
-  .live-pulse { animation: none; box-shadow: 0 0 0 0 rgba(255,61,110,.4); }
+  .live-pulse { animation: none; box-shadow: 0 0 0 0 rgba(255, 0, 0, .4); }
+  /* Progress bar: mostra direto em 90% sem animação */
+  .progress-fill { width: 90%; opacity: 1; animation: none; }
+  /* Marquee: estático e centralizado, sem repetir */
+  .event-bar-marquee { text-align: center; }
+  .event-bar-marquee .event-bar-track {
+    animation: none;
+    transform: none;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .event-bar-marquee .event-bar-item:nth-child(2) { display: none; }
 }
 
 </style>
@@ -1081,18 +1289,30 @@ p:last-child { margin-bottom: 0; }
 
 <a class="skip-link" href="#form">Ir para o formulário</a>
 
-<!-- Barra fixa topo (dia · data · hora · Ao vivo) -->
-<div class="event-bar" role="status" aria-live="polite">
-  <div class="container event-bar-inner">
-    <span class="event-bar-dot" aria-hidden="true"></span>
-    <span class="event-bar-text">
-      <span data-cfg="weekday">DIA A CONFIRMAR</span> ·
-      <span data-cfg="date">DATA A CONFIRMAR</span> ·
-      <span data-cfg="time">HORÁRIO A CONFIRMAR</span>
+<!-- Faixa fixa topo — ticker contínuo (marquee) com data/horário oficial -->
+<div class="event-bar event-bar-marquee" role="region" aria-label="Informações do evento ao vivo">
+  <span class="sr-only">
+    Aula ao vivo e gratuita. Brasil,
+    <span data-cfg="br-date">29/09</span> às <span data-cfg="br-time">20h30</span>.
+    Austrália,
+    <span data-cfg="au-date">30/09</span> às <span data-cfg="au-time">9h30</span>.
+  </span>
+  <div class="event-bar-track" aria-hidden="true">
+    <span class="event-bar-item">
+      <span class="event-bar-dot"></span>
+      <span class="event-bar-cell">Brasil: <span data-cfg="br-date">29/09</span> às <span data-cfg="br-time">20h30</span></span>
+      <span class="event-bar-dot"></span>
+      <span class="event-bar-cell">Austrália: <span data-cfg="au-date">30/09</span> às <span data-cfg="au-time">9h30</span></span>
+      <span class="event-bar-dot"></span>
+      <span class="event-bar-live"><span class="live-pulse"></span>Aula ao vivo e gratuita</span>
     </span>
-    <span class="event-bar-live">
-      <span class="live-pulse" aria-hidden="true"></span>
-      Ao vivo
+    <span class="event-bar-item">
+      <span class="event-bar-dot"></span>
+      <span class="event-bar-cell">Brasil: <span data-cfg="br-date">29/09</span> às <span data-cfg="br-time">20h30</span></span>
+      <span class="event-bar-dot"></span>
+      <span class="event-bar-cell">Austrália: <span data-cfg="au-date">30/09</span> às <span data-cfg="au-time">9h30</span></span>
+      <span class="event-bar-dot"></span>
+      <span class="event-bar-live"><span class="live-pulse"></span>Aula ao vivo e gratuita</span>
     </span>
   </div>
 </div>
@@ -1123,25 +1343,37 @@ p:last-child { margin-bottom: 0; }
       <div class="hero-copy">
         <span class="eyebrow">
           <span class="live-pulse" aria-hidden="true"></span>
-          Aula ao vivo · Gratuita
+          Aula ao vivo e gratuita
         </span>
         <h1 id="hero-headline">
           Aprenda o passo a passo para estudar e trabalhar legalmente na Austrália,
           <span class="text-accent">sem cometer os erros que travam a maioria dos vistos.</span>
         </h1>
         <p class="hero-sub">
-          Descubra como estruturar seu plano de estudos, visto e chegada na Austrália com quem
-          ajuda brasileiros a realizar esse sonho há quase 10 anos.
+          Conheça o Método PCE e valide se você está preparado para estudar e trabalhar
+          legalmente na Austrália, sem cometer os erros que travam a maioria dos vistos.
         </p>
 
-        <ul class="hero-info" role="list">
-          <li>
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h3V2Zm-3 8v10h16V10H4Zm2 2h4v4H6v-4Z"/></svg>
-            <span><strong data-cfg="weekday">DIA A CONFIRMAR</strong>, <span data-cfg="date">DATA A CONFIRMAR</span></span>
+        <p class="hero-method">
+          <strong>Método PCE:</strong> Perfil, Coerência e Evidência.
+        </p>
+
+        <ul class="hero-info hero-info-schedule" role="list">
+          <li class="hero-schedule">
+            <span class="hero-schedule-label">Brasil</span>
+            <span class="hero-schedule-value">
+              <strong><span data-cfg="br-date">29/09</span></strong>
+              <span class="hero-schedule-sep" aria-hidden="true">·</span>
+              <span data-cfg="br-time">20h30</span>
+            </span>
           </li>
-          <li>
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5v5.4l4 2.4-.9 1.5-4.7-2.8V7h1.6Z"/></svg>
-            <span data-cfg="time">HORÁRIO A CONFIRMAR</span>
+          <li class="hero-schedule">
+            <span class="hero-schedule-label">Austrália</span>
+            <span class="hero-schedule-value">
+              <strong><span data-cfg="au-date">30/09</span></strong>
+              <span class="hero-schedule-sep" aria-hidden="true">·</span>
+              <span data-cfg="au-time">9h30</span>
+            </span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 1a11 11 0 0 0-11 11 11 11 0 0 0 11 11 11 11 0 0 0 11-11A11 11 0 0 0 12 1Zm-1 5h2v6l5 3-1 1.7-6-3.7V6Z"/></svg>
@@ -1201,11 +1433,11 @@ p:last-child { margin-bottom: 0; }
   <section class="section section-light" id="construir" aria-labelledby="construir-headline">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">O que você vai construir</span>
+        <span class="eyebrow">Conheça o Método PCE</span>
         <h2 id="construir-headline">Saia da aula sabendo exatamente qual o seu próximo passo para a Austrália.</h2>
         <p class="lead">
-          Você vai entender os principais pontos para planejar seu intercâmbio sem cair
-          nos erros que mais travam vistos e atrasam sonhos.
+          Perfil, Coerência e Evidência: os três pilares para avaliar se o seu plano
+          de estudar e trabalhar legalmente na Austrália está realmente preparado.
         </p>
       </div>
 
@@ -1331,20 +1563,22 @@ p:last-child { margin-bottom: 0; }
     <div class="container center section-narrow">
       <span class="eyebrow eyebrow-dark">
         <span class="live-pulse" aria-hidden="true"></span>
-        Aula ao vivo · Gratuita
+        Aula ao vivo e gratuita
       </span>
       <h2 id="cta-final-headline">Sua vaga na aula gratuita sobre visto e intercâmbio para a Austrália está aberta.</h2>
 
       <div class="cta-info">
         <div class="cta-info-item">
-          <span class="cta-info-label">Quando</span>
+          <span class="cta-info-label">Brasil</span>
           <span class="cta-info-value">
-            <strong data-cfg="weekday">DIA A CONFIRMAR</strong>, <span data-cfg="date">DATA A CONFIRMAR</span>
+            <strong><span data-cfg="br-date">29/09</span></strong> às <span data-cfg="br-time">20h30</span>
           </span>
         </div>
         <div class="cta-info-item">
-          <span class="cta-info-label">Horário</span>
-          <span class="cta-info-value" data-cfg="time">HORÁRIO A CONFIRMAR</span>
+          <span class="cta-info-label">Austrália</span>
+          <span class="cta-info-value">
+            <strong><span data-cfg="au-date">30/09</span></strong> às <span data-cfg="au-time">9h30</span>
+          </span>
         </div>
         <div class="cta-info-item">
           <span class="cta-info-label">Onde</span>
@@ -1358,18 +1592,24 @@ p:last-child { margin-bottom: 0; }
     </div>
   </section>
 
-  <!-- Barra de rodapé com a mesma info do topo (padrão da referência) -->
-  <div class="event-bar event-bar-bottom" aria-hidden="true">
-    <div class="container event-bar-inner">
-      <span class="event-bar-dot"></span>
-      <span class="event-bar-text">
-        <span data-cfg="weekday">DIA A CONFIRMAR</span> ·
-        <span data-cfg="date">DATA A CONFIRMAR</span> ·
-        <span data-cfg="time">HORÁRIO A CONFIRMAR</span>
+  <!-- Faixa de rodapé — ticker contínuo (mesmo padrão da faixa do topo) -->
+  <div class="event-bar event-bar-marquee event-bar-bottom" aria-hidden="true">
+    <div class="event-bar-track">
+      <span class="event-bar-item">
+        <span class="event-bar-dot"></span>
+        <span class="event-bar-cell">Brasil: <span data-cfg="br-date">29/09</span> às <span data-cfg="br-time">20h30</span></span>
+        <span class="event-bar-dot"></span>
+        <span class="event-bar-cell">Austrália: <span data-cfg="au-date">30/09</span> às <span data-cfg="au-time">9h30</span></span>
+        <span class="event-bar-dot"></span>
+        <span class="event-bar-live"><span class="live-pulse"></span>Aula ao vivo e gratuita</span>
       </span>
-      <span class="event-bar-live">
-        <span class="live-pulse"></span>
-        Ao vivo
+      <span class="event-bar-item">
+        <span class="event-bar-dot"></span>
+        <span class="event-bar-cell">Brasil: <span data-cfg="br-date">29/09</span> às <span data-cfg="br-time">20h30</span></span>
+        <span class="event-bar-dot"></span>
+        <span class="event-bar-cell">Austrália: <span data-cfg="au-date">30/09</span> às <span data-cfg="au-time">9h30</span></span>
+        <span class="event-bar-dot"></span>
+        <span class="event-bar-live"><span class="live-pulse"></span>Aula ao vivo e gratuita</span>
       </span>
     </div>
   </div>
@@ -1414,11 +1654,16 @@ p:last-child { margin-bottom: 0; }
    CONFIGURAÇÃO — trocar aqui na integração final
    ------------------------------------------------------------------------- */
 const EVENT_CONFIG = {
-  weekday: 'DIA A CONFIRMAR',
-  date: 'DATA A CONFIRMAR',
-  time: 'HORÁRIO A CONFIRMAR',
+  /* Datas oficiais do evento (Método PCE) */
+  'br-date': '29/09',
+  'br-time': '20h30',
+  'au-date': '30/09',
+  'au-time': '9h30',
+  method: 'PCE',
+  methodExpanded: 'Perfil, Coerência e Evidência',
+
   instagramUrl: '',                 // ex.: 'https://instagram.com/intercambioaustraliaoficial'
-  whatsappGroupUrl: '',             // ex.: 'https://chat.whatsapp.com/xxxx'
+  whatsappGroupUrl: 'https://chat.whatsapp.com/Lj1KepxzSYF1OB4A83P6rH',
   formEndpoint: '',                 // POST para o CRM quando demoMode = false
   analyticsEnabled: false,          // GA4 / Meta Pixel — só na produção
   demoMode: true                    // true = valida e redireciona; nenhum dado sai desta LP
