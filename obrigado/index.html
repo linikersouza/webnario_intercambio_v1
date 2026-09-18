@@ -1858,9 +1858,9 @@ const EVENT_CONFIG = {
 
   instagramUrl: '',
   whatsappGroupUrl: 'https://chat.whatsapp.com/Lj1KepxzSYF1OB4A83P6rH',
-  surveyEndpoint: '',            // POST das respostas quando demoMode = false
+  surveyEndpoint: 'https://script.google.com/macros/s/AKfycbyns4FrAt09unVDy8VEwgxXhJizgn18NUEwFDNmkLOkipXoQPXF1XK7qPHqLkDeNzlu/exec',
   analyticsEnabled: false,
-  demoMode: true
+  demoMode: false
 };
 
 /* -------------------------------------------------------------------------
@@ -2034,13 +2034,16 @@ if (surveyForm) {
     }
 
     const payload = {
+      type: 'survey-obrigado',
+      source: 'Webinário — Pesquisa Obrigado',
+      firstName: getFirstName(),
       situacao: sit.value,
       recursos: rec.value,
       prazo:    prz.value,
       instagram: ig.value.trim(),
       obstaculo: obs.value.trim(),
-      firstName: getFirstName(),
-      source: 'Webinário — obrigado',
+      page: location.href,
+      userAgent: navigator.userAgent,
       ts: new Date().toISOString()
     };
 
@@ -2048,14 +2051,22 @@ if (surveyForm) {
     surveyBtn.disabled = true;
 
     try {
-      if (!EVENT_CONFIG.demoMode && EVENT_CONFIG.surveyEndpoint) {
-        await fetch(EVENT_CONFIG.surveyEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
+      /* Envia respostas ao Google Apps Script (mesmo endpoint da inscrição).
+         no-cors + text/plain evita preflight; keepalive garante entrega. */
+      if (EVENT_CONFIG.surveyEndpoint) {
+        try {
+          await fetch(EVENT_CONFIG.surveyEndpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            keepalive: true,
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          });
+        } catch (err) {
+          console.warn('[Pesquisa] Falha ao enviar ao endpoint:', err);
+        }
       } else {
-        await new Promise(r => setTimeout(r, 500));
+        await new Promise(r => setTimeout(r, 300));
       }
 
       // Desabilita o formulário e revela o sucesso
